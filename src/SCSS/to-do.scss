@@ -1,0 +1,71 @@
+#to-do {
+    $border-main: 1px solid black;
+    $div-height: 50px;
+    $div-padding: 20px;
+
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    #main-container {
+        height: 66vh;
+        width: 33%;
+        border: $border-main;
+       
+
+        div {
+            display: flex;
+
+            height: $div-height;
+            width: 100%;
+            border: $border-main;
+            padding-top: $div-padding;
+            padding-bottom: $div-padding;
+        }
+
+        #search {
+            justify-content: space-around;
+        }
+
+        .new-task {
+            justify-content: space-around;
+            
+            form {
+                display: flex;
+            }
+        }
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+
+            .icons {
+                display: flex;
+
+                border: none;
+                width: 15%;
+
+                font-size: 150%;
+
+                svg {
+                    margin: 0 5px;
+                }
+
+                svg:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .new-task {
+                border: none;
+                height: 100%;
+                padding: 0;
+            }
+        }
+        
+    }
+}

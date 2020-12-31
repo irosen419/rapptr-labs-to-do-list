@@ -1,11 +1,11 @@
 import LoginForm from '../Components/LoginFrom'
 import '../SCSS/login.scss'
 
-function Login() {
+function Login({ loginHandler }) {
     return (
         <div id="login">
             <h1>Rapptr Labs</h1>
-            <LoginForm />
+            <LoginForm loginHandler={loginHandler} />
         </div>
     )
 }

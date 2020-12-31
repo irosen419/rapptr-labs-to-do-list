@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-function LoginForm() {
+function LoginForm({ loginHandler }) {
 
     const [loginInfo, setLoginInfo] = useState({ email: "", password: "" })
     const [invalidEmail, setInvalidEmail] = useState(false)
@@ -32,14 +32,19 @@ function LoginForm() {
         }
     }
 
+    const submitHandler = (e) => {
+        e.preventDefault()
+        loginHandler(loginInfo)
+    }
+
     return (
-        <form>
+        <form onSubmit={submitHandler}>
             <label htmlFor="email">Email</label>
 
             <input className={invalidEmail ? 'invalid' : null}
                 name="email"
                 placeholder="​user@rapptrlabs.com​"
-                type="text"
+                type="email"
                 maxLength="50"
                 value={loginInfo.email}
                 onChange={changeHandler} />
