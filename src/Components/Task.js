@@ -2,7 +2,7 @@ import { MdModeEdit, MdDelete } from 'react-icons/md'
 import React, { useState } from 'react'
 import NewTask from '../Components/NewTask'
 
-function Task({ task, deleteTask, submitTask }) {
+function Task({ taskId, task, deleteTask, submitTask }) {
 
     const [edit, setEdit] = useState(false)
 
@@ -10,7 +10,7 @@ function Task({ task, deleteTask, submitTask }) {
         <div className="task">
             {
                 edit ?
-                    <NewTask submitTask={submitTask} task={task} />
+                    <NewTask taskId={taskId} submitTask={submitTask} task={task} edit={edit} />
                     :
                     <>
                         <p>{task}</p>

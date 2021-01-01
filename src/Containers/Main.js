@@ -17,10 +17,16 @@ function List() {
         setNewForm(true)
     }
 
-    const submitTask = (taskInput) => {
+    const submitTask = (taskInput, taskId = null) => {
         let newTaskArray = tasks
-        setTasks([...newTaskArray, taskInput])
-        setNewForm(false)
+
+        if (typeof taskId === 'number') {
+            newTaskArray[taskId] = taskInput
+            setTasks([...newTaskArray])
+        } else {
+            setTasks([...newTaskArray, taskInput])
+            setNewForm(false)
+        }
     }
 
     const deleteTask = (taskToDelete) => {
@@ -30,9 +36,10 @@ function List() {
 
     return (
         <div id="main-container">
+            {console.log(tasks)}
             <Search renderNewForm={renderNewForm} />
             {newForm ? <NewTask submitTask={submitTask} /> : null}
-            {tasks.length ? tasks.map(task => <Task key={task} task={task} deleteTask={deleteTask} submitTask={submitTask} />) : null}
+            {tasks.length ? tasks.map(task => <Task key={task} taskId={tasks.indexOf(task)} task={task} deleteTask={deleteTask} submitTask={submitTask} />) : null}
         </div>
     )
 }

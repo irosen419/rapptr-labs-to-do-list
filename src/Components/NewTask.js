@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-function NewTask({ submitTask, task }) {
+function NewTask({ taskId, submitTask, task }) {
 
     const [taskInput, setTaskInput] = useState("")
 
@@ -14,7 +14,11 @@ function NewTask({ submitTask, task }) {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        submitTask(taskInput)
+        if (typeof taskId === 'number') {
+            submitTask(taskInput, taskId)
+        } else {
+            submitTask(taskInput)
+        }
     }
 
     return (
