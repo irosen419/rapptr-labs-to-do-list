@@ -12,10 +12,24 @@
     align-items: center;
 
     #main-container {
+        position: relative;
         height: 66vh;
         width: 33%;
         border: $border-main;
+
+        display: flex;
+        flex-direction: column;
        
+        overflow: hidden;
+        overflow-y: scroll;
+
+        div:first-child {
+            position:sticky;
+            top: 0;
+            left: 0;
+            background-color: rgba($color: #ffffff, $alpha: 1.0);
+            z-index: 1000;
+        }
 
         div {
             display: flex;
@@ -45,6 +59,7 @@
 
             .icons {
                 display: flex;
+                margin: 0;
 
                 border: none;
                 width: 15%;

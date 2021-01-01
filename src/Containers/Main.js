@@ -7,6 +7,7 @@ function List() {
 
     const [newForm, setNewForm] = useState(false)
     const [tasks, setTasks] = useState([])
+    const [filter, setFilter] = useState("")
 
     useEffect(() => {
         let taskArray = localStorage.getItem('taskArray')
@@ -34,12 +35,15 @@ function List() {
         setTasks(newTaskArray)
     }
 
+    const filterTasks = (searchInput) => {
+        setFilter(searchInput)
+    }
+
     return (
         <div id="main-container">
-            {console.log(tasks)}
-            <Search renderNewForm={renderNewForm} />
+            <Search renderNewForm={renderNewForm} filterTasks={filterTasks} />
             {newForm ? <NewTask submitTask={submitTask} /> : null}
-            {tasks.length ? tasks.map(task => <Task key={task} taskId={tasks.indexOf(task)} task={task} deleteTask={deleteTask} submitTask={submitTask} />) : null}
+            {tasks.length ? tasks.filter(task => task.includes(filter)).map(task => <Task key={task} taskId={tasks.indexOf(task)} task={task} deleteTask={deleteTask} submitTask={submitTask} />) : null}
         </div>
     )
 }
