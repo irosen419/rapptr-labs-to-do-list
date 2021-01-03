@@ -14,7 +14,7 @@ function Search({ renderNewForm, filterTasks }) {
 
     return (
         <div id="search">
-            <input name="search" type="text" value={searchInput} onChange={changeHandler} />
+            <input name="search" type="text" value={searchInput} placeholder="Search" onChange={changeHandler} />
             <button onClick={renderNewForm}>New</button>
         </div>
     )

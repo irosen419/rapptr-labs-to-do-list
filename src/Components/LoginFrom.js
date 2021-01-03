@@ -39,27 +39,31 @@ function LoginForm({ loginHandler }) {
 
     return (
         <form onSubmit={submitHandler}>
-            <label htmlFor="email">Email</label>
-
-            <input className={invalidEmail ? 'invalid' : null}
-                name="email"
-                placeholder="​user@rapptrlabs.com​"
-                type="email"
-                maxLength="50"
-                value={loginInfo.email}
-                onChange={changeHandler} />
-
-            <label htmlFor="password">Password</label>
-
-            <input className={invalidPassword ? 'invalid' : null}
-                name="password"
-                placeholder="Must be between 4 and 16 characters"
-                type="password"
-                maxLength="16"
-                value={loginInfo.password}
-                onChange={changeHandler} />
-
-            <input type="submit" value="Login" disabled={login} />
+            <div>
+                <label htmlFor="email">Email</label>
+                <input className={invalidEmail ? "invalid?" : null}
+                    name="email"
+                    placeholder="​user@rapptrlabs.com​"
+                    type="email"
+                    maxLength="50"
+                    value={loginInfo.email}
+                    onChange={changeHandler} />
+                <div className={`error-message ${invalidEmail ? "invalid" : null}`} id="email-error">Not a valid email</div>
+            </div>
+            <div>
+                <label htmlFor="password">Password</label>
+                <input className={invalidPassword ? 'invalid' : null}
+                    name="password"
+                    placeholder="Must be between 4 and 16 characters"
+                    type="password"
+                    maxLength="16"
+                    value={loginInfo.password}
+                    onChange={changeHandler} />
+                <div className={`error-message ${invalidPassword ? "invalid" : null}`} id="email-error">Not a valid password</div>
+            </div>
+            <div>
+                <input type="submit" value="Login" disabled={login} />
+            </div>
         </form>
     )
 }

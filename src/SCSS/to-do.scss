@@ -1,6 +1,6 @@
 #to-do {
     $border-main: 1px solid black;
-    $div-height: 50px;
+    $div-height: 90px;
     $div-padding: 20px;
 
     height: 100vh;
@@ -23,33 +23,77 @@
         overflow: hidden;
         overflow-y: scroll;
 
-        div:first-child {
-            position:sticky;
-            top: 0;
-            left: 0;
-            background-color: rgba($color: #ffffff, $alpha: 1.0);
-            z-index: 1000;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+
+        input[type=text] {
+            height: 50px;
+            width: 50%;
+        }
+
+        input {
+            font-size: large;
+            padding-left: 5px;
         }
 
         div {
             display: flex;
+            align-items: center;
 
             height: $div-height;
             width: 100%;
             border: $border-main;
             padding-top: $div-padding;
             padding-bottom: $div-padding;
-        }
 
-        #search {
+        }
+        
+        div:first-child {
+            position: sticky;
+            top: 0;
+            left: 0;
+
             justify-content: space-around;
+            background-color: rgba($color: #ffffff, $alpha: 1.0);
+
+            input[type=text] {
+                transition: width 400ms linear;
+            }
+            
+            input[type=text]:focus {
+                width: 80%;
+                outline: none;
+            }
+
+            button {
+                height: 50px;
+                width: 15%;
+                font-size: large;
+            }
         }
 
         .new-task {
-            justify-content: space-around;
+            justify-content: center;
             
             form {
                 display: flex;
+                justify-content: center;
+                width: 100%;
+
+                input[type=text] {
+                    width: 60%;
+                    margin-right: 5%;
+                }
+
+                input[type=text]:focus {
+                    outline: none;
+                }
+
+                input[type=submit] {
+                    width: 20%;
+                    margin-left: 5%;
+                }
+
             }
         }
 
@@ -57,14 +101,20 @@
             display: flex;
             justify-content: space-between;
 
+            p {
+                font-size: 24px;
+                margin-left: 10%;
+            }
+
             .icons {
                 display: flex;
                 margin: 0;
+                margin-right: 10%;
 
                 border: none;
                 width: 15%;
 
-                font-size: 150%;
+                font-size: 56px;
 
                 svg {
                     margin: 0 5px;
@@ -74,13 +124,10 @@
                     cursor: pointer;
                 }
             }
-
-            .new-task {
-                border: none;
-                height: 100%;
-                padding: 0;
-            }
         }
-        
+    }
+
+    #main-container::-webkit-scrollbar {
+        display: none;
     }
 }

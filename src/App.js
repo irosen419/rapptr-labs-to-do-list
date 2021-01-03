@@ -1,3 +1,4 @@
+import './App.scss'
 import Login from './Containers/Login'
 import ToDo from './Containers/ToDo'
 function App() {
