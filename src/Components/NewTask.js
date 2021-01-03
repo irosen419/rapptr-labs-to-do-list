@@ -24,7 +24,7 @@ function NewTask({ taskId, submitTask, task }) {
     return (
         <div className="new-task">
             <form onSubmit={submitHandler}>
-                <input type="text" value={taskInput} onChange={changeHandler} />
+                <input className="form-input" type="text" value={taskInput} onChange={changeHandler} />
                 <input type="submit" value="Save" />
             </form>
         </div>

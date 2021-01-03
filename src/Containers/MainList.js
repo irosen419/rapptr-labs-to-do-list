@@ -17,6 +17,14 @@ function List() {
         setTasks(taskArray || [])
     }, [])
 
+    useEffect(() => {
+        if (newForm) {
+            console.log('form')
+            let formInput = document.querySelector('.form-input')
+            formInput.focus()
+        }
+    }, [newForm])
+
     const renderNewForm = () => {
         setNewForm(true)
     }
