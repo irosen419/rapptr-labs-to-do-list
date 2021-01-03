@@ -1,4 +1,4 @@
-import LoginForm from '../Components/LoginFrom'
+import LoginForm from '../Components/LoginForm'
 import '../SCSS/login.scss'
 
 function Login({ loginHandler }) {

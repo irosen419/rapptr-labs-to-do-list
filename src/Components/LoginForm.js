@@ -18,7 +18,7 @@ function LoginForm({ loginHandler }) {
 
     const validateUserInfo = (name, value) => {
         if (name === 'email') {
-            if (!value.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+            if (!value.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{3}$/)) {
                 setInvalidEmail(true)
             } else {
                 setInvalidEmail(false)
@@ -39,9 +39,9 @@ function LoginForm({ loginHandler }) {
 
     return (
         <form onSubmit={submitHandler}>
-            <div>
+            <div className="inner-form">
                 <label htmlFor="email">Email</label>
-                <input className={invalidEmail ? "invalid?" : null}
+                <input className={invalidEmail ? "invalid" : null}
                     name="email"
                     placeholder="​user@rapptrlabs.com​"
                     type="email"
@@ -50,7 +50,7 @@ function LoginForm({ loginHandler }) {
                     onChange={changeHandler} />
                 <div className={`error-message ${invalidEmail ? "invalid" : null}`} id="email-error">Not a valid email</div>
             </div>
-            <div>
+            <div className="inner-form">
                 <label htmlFor="password">Password</label>
                 <input className={invalidPassword ? 'invalid' : null}
                     name="password"
@@ -61,8 +61,8 @@ function LoginForm({ loginHandler }) {
                     onChange={changeHandler} />
                 <div className={`error-message ${invalidPassword ? "invalid" : null}`} id="email-error">Not a valid password</div>
             </div>
-            <div>
-                <input type="submit" value="Login" disabled={login} />
+            <div className="inner-form">
+                <input type="submit" value="Login" disabled={login} id={!login ? 'login' : null} />
             </div>
         </form>
     )
