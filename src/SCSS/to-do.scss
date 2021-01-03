@@ -2,7 +2,8 @@
     $border-main: 1px solid black;
     $div-height: 90px;
     $div-padding: 20px;
-
+    
+    position: relative;
     height: 100vh;
     width: 100%;
 
@@ -11,11 +12,65 @@
     justify-content: center;
     align-items: center;
 
+    button:hover {
+        cursor: pointer
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+    #navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        height: 75px;
+        width: 100%;
+
+        border-bottom: 2px solid black;
+        background:rgba($color: #2b4498, $alpha: 0.75);
+
+        #navbar-left {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            width: 25%;
+
+            h2 {
+                color: rgba($color: #000000, $alpha: 1.0);
+            }
+
+            img {
+                object-fit: cover;
+                height: 25%;
+                width: 75px;
+                border: 1px solid black;
+                border-radius: 100%;
+            }
+        }
+
+        button {
+            height: 50%;
+            width: 75px;
+            font-size: medium;
+
+            border-radius: 10px;
+            box-shadow: 2px 5px 7px black;
+        }
+    }
+
     #main-container {
         position: relative;
         height: 66vh;
         width: 33%;
         border: $border-main;
+        border-radius: 25px;
 
         display: flex;
         flex-direction: column;
@@ -26,14 +81,22 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
 
-        input[type=text] {
-            height: 50px;
-            width: 50%;
-        }
-
         input {
             font-size: large;
             padding-left: 5px;
+
+            border-radius: 25px;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        input[type=text] {
+            height: 50px;
+            width: 50%;
+
+            padding-left: 55px;
         }
 
         div {
@@ -42,33 +105,38 @@
 
             height: $div-height;
             width: 100%;
-            border: $border-main;
+
+            border-bottom: $border-main;
             padding-top: $div-padding;
             padding-bottom: $div-padding;
-
         }
         
         div:first-child {
             position: sticky;
             top: 0;
             left: 0;
-
+            
             justify-content: space-around;
             background-color: rgba($color: #ffffff, $alpha: 1.0);
 
-            input[type=text] {
+            border-top: none;
+
+            input[name=search] {
                 transition: width 400ms linear;
             }
             
-            input[type=text]:focus {
+            input[name=search]:focus {
                 width: 80%;
-                outline: none;
             }
 
             button {
                 height: 50px;
                 width: 15%;
+
+                border-radius: 25px;
                 font-size: large;
+
+                box-shadow: 2px 5px 7px black;
             }
         }
 
@@ -85,31 +153,32 @@
                     margin-right: 5%;
                 }
 
-                input[type=text]:focus {
-                    outline: none;
-                }
-
                 input[type=submit] {
                     width: 20%;
                     margin-left: 5%;
+
+                    box-shadow: 2px 5px 7px black;
+                }
+
+                input[type=submit]:hover {
+                    cursor: pointer
                 }
 
             }
         }
 
         .task {
-            display: flex;
             justify-content: space-between;
+
+            padding: 0 10%;
 
             p {
                 font-size: 24px;
-                margin-left: 10%;
             }
 
             .icons {
                 display: flex;
                 margin: 0;
-                margin-right: 10%;
 
                 border: none;
                 width: 15%;

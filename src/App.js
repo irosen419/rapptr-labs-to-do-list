@@ -1,40 +1,54 @@
 import './App.scss'
+import React, { useState } from 'react'
 import Login from './Containers/Login'
 import ToDo from './Containers/ToDo'
+import axios from 'axios'
+
 function App() {
 
+  const [userData, setUserData] = useState({})
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [loginError, setLoginError] = useState(false)
+
   const loginHandler = (userInfo) => {
+    let formData = new FormData()
+    formData.append('email', userInfo.email)
+    formData.append('password', userInfo.password)
 
-    const options = {
-      method: 'POST',
+    axios({
+      method: 'post',
+      url: 'http://dev.rapptrlabs.com/Tests/scripts/user-login.php',
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        'Content-type': 'multipart/form-data'
       },
-      body: JSON.stringify(userInfo)
-    }
-
-    fetch('http://dev.rapptrlabs.com/Tests/scripts/user-login.php', options)
-      .then(resp => resp.json())
-      .then(console.log)
+      data: formData,
+    }).then((resp) => {
+      if (resp.data) {
+        setUserData(resp.data)
+        logUserIn()
+      }
+    }).catch(err => {
+      console.log(err)
+      setLoginError(true)
+    })
   }
 
-  const userData = {
-    "user_id": 16,
-    "user_email": "test@rapptrlabs.com",
-    "user_username": "testuser",
-    "user_is_active": 1,
-    "user_profile_image": "http://dev.rapptrlabs.com/Tests/images/taylor_avatar.png", "user_last_active_epoch": 1544680026,
-    "user_creation_epoch": 1544713200,
-    "user_is_new": 1,
-    "user_token": "6dd4737a8b7ec61313ae5e900420d46815e1d13b2902be71b97a8fbf1f421a3e"
+  const logUserIn = () => {
+    setTimeout(() => {
+      setLoggedIn(true)
+      if (loginError) setLoginError(false)
+    }, 450)
   }
+
+  const logout = () => {
+    setLoggedIn(false)
+  }
+
 
   return (
     <div className="App">
-      <Login loginHandler={loginHandler} />
-      <ToDo userDate={userData} />
-    </div>
+      {loggedIn ? <ToDo userData={userData} logout={logout} /> : <Login loginHandler={loginHandler} error={loginError} />}
+    </div >
   );
 }
 
