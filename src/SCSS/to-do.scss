@@ -38,8 +38,9 @@
         #navbar-left {
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-evenly;
 
+            height: 100%;
             width: 25%;
 
             h2 {
@@ -48,8 +49,8 @@
 
             img {
                 object-fit: cover;
-                height: 25%;
-                width: 75px;
+                height: 50px;
+                width: 50px;
                 border: 1px solid black;
                 border-radius: 100%;
             }
@@ -73,6 +74,7 @@
         position: relative;
         height: 66vh;
         width: 33%;
+
         border: $border-main;
         border-radius: 25px;
 
@@ -85,11 +87,12 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
 
+        box-shadow: 3px 5px 7px 2px rgb(0, 0, 0);
+
         input {
             font-size: large;
-            padding-left: 5px;
 
-            border-radius: 25px;
+            border-radius: 30px;
         }
 
         input:focus {
@@ -100,16 +103,16 @@
             height: 50px;
             width: 50%;
 
-            padding-left: 55px;
+            padding-left: 10px;
         }
-
+        
         div {
             display: flex;
             align-items: center;
-
+            
             height: $div-height;
             width: 100%;
-
+            
             border-bottom: $border-main;
             padding-top: $div-padding;
             padding-bottom: $div-padding;
@@ -122,7 +125,7 @@
             
             justify-content: space-around;
             background-color: rgba($color: #ffffff, $alpha: 1.0);
-
+            
             border-top: none;
 
             input[name=search] {
@@ -135,6 +138,8 @@
                 color: rgb(228, 228, 228);
                 
                 transition: width 400ms linear;
+
+                padding-left: 55px;
             }
             
             input[name=search]:focus {
@@ -148,7 +153,12 @@
                 border-radius: 25px;
                 font-size: large;
 
-                box-shadow: 2px 5px 7px black;
+                box-shadow: 2px 5px 7px rgb(143, 143, 143);
+                transition: 75ms linear;
+            }
+
+            button:focus {
+                box-shadow: 0 2px 3px black;
             }
         }
 
@@ -211,4 +221,28 @@
     #main-container::-webkit-scrollbar {
         display: none;
     }
+
+    @media only screen and (max-width: 1024px){
+        #main-container {
+            width: 66%
+        }
+        
+        #navbar {
+            justify-content: space-evenly;
+            h2 {
+                font-size: 20px;
+            }
+        }
+    }
+    @media only screen and (max-width: 425px) {
+        h1 {
+            font-size: 36px;
+        }
+
+        #main-container {
+            width: 75%;
+        }
+
+    }
+    
 }

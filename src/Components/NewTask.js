@@ -14,17 +14,22 @@ function NewTask({ taskId, submitTask, task }) {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        if (typeof taskId === 'number') {
-            submitTask(taskInput, taskId)
-        } else {
-            submitTask(taskInput)
+        if (taskInput.length > 0) {
+            if (typeof taskId === 'number') {
+                submitTask(taskInput, taskId)
+            } else {
+                submitTask(taskInput)
+            }
         }
     }
 
     return (
         <div className="new-task">
             <form onSubmit={submitHandler}>
-                <input className="form-input" type="text" value={taskInput} onChange={changeHandler} />
+                <input className="form-input"
+                    type="text" maxLength="25"
+                    value={taskInput}
+                    onChange={changeHandler} />
                 <input type="submit" value="Save" />
             </form>
         </div>

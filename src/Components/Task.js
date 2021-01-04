@@ -10,7 +10,10 @@ function Task({ taskId, task, deleteTask, submitTask }) {
         <div className="task">
             {
                 edit ?
-                    <NewTask taskId={taskId} submitTask={submitTask} task={task} edit={edit} />
+                    <NewTask taskId={taskId}
+                        submitTask={submitTask}
+                        task={task}
+                        edit={edit} />
                     :
                     <>
                         <p>{task}</p>

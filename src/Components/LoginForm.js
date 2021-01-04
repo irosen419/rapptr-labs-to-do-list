@@ -52,23 +52,35 @@ function LoginForm({ loginHandler, error }) {
                     maxLength="50"
                     value={loginInfo.email}
                     onChange={changeHandler} />
-                <div className={`error-message ${invalidEmail ? "invalid" : null}`} id="email-error">Not a valid email</div>
+                <div className={`error-message ${invalidEmail ? "invalid" : null}`}
+                    id="email-error">
+                    Not a valid email
+                    </div>
             </div>
             <div className="inner-form">
                 <label htmlFor="password">Password</label>
                 <input className={invalidPassword ? 'invalid' : null}
                     id="password"
                     name="password"
-                    placeholder="Must be between 4 and 16 characters"
+                    placeholder="Must be at least 4 characters"
                     type="password"
                     maxLength="16"
                     value={loginInfo.password}
                     onChange={changeHandler} />
-                <div className={`error-message ${invalidPassword ? "invalid" : null}`} id="password-error">Not a valid password</div>
+                <div className={`error-message ${invalidPassword ? "invalid" : null}`}
+                    id="password-error">
+                    Not a valid password
+                    </div>
             </div>
             <div className="inner-form">
-                <input type="submit" value="Login" disabled={login} id={login ? null : 'login'} />
-                <div className={`error-message ${error ? "invalid" : null}`} id="login-error">The server could not be reached. Please try again later.</div>
+                <input type="submit"
+                    value="Login"
+                    disabled={login}
+                    id={login ? null : 'login'} />
+                <div className={`error-message ${error ? "invalid" : null}`}
+                    id="login-error">
+                    The server could not be reached. Please try again later.
+                    </div>
             </div>
         </form>
 

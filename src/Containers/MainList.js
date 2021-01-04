@@ -53,11 +53,21 @@ function List() {
         setFilter(searchInput)
     }
 
+    const mapTasks = () => {
+        let filtered = tasks.filter(task => task.toLowerCase().includes(filter.toLowerCase()))
+        return filtered.map(task =>
+            <Task key={task}
+                taskId={tasks.indexOf(task)}
+                task={task}
+                deleteTask={deleteTask}
+                submitTask={submitTask} />)
+    }
+
     return (
         <div id="main-container">
             <Search renderNewForm={renderNewForm} filterTasks={filterTasks} />
             {newForm ? <NewTask submitTask={submitTask} /> : null}
-            {tasks.length ? tasks.filter(task => task.includes(filter)).map(task => <Task key={task} taskId={tasks.indexOf(task)} task={task} deleteTask={deleteTask} submitTask={submitTask} />) : null}
+            {tasks.length ? mapTasks() : null}
         </div>
     )
 }
